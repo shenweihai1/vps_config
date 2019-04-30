@@ -1,3 +1,4 @@
+cd /root/
 yum install git
 echo ""
 
@@ -20,6 +21,7 @@ echo ""
 
 cp /root/vps_config/nginx/default.conf /etc/nginx/conf.d/default.conf 
 cp /root/vps_config/nginx/nginx.conf /etc/nginx/nginx.conf 
+cp -r /root/vps_config/pdf /root/
 
 nginx -t 
 echo ""
