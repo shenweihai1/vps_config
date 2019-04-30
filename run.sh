@@ -1,0 +1,36 @@
+yum install git
+echo ""
+
+[ ! -d "vps_config" ] && git clone git@github.com:shenweihai1/vps_config.git vps_config
+[ -d "vps_config" ] && cd vps_config && git pull && cd ..
+echo ""
+
+[ ! -d "sparky" ] && git clone git@github.com:shenweihai1/sparky.git sparky 
+[ -d "sparky" ] && cd sparky && git pull && cd ..
+echo ""
+
+[ ! -d "/etc/yum.repos.d/nginx.repo" ] && echo "[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/
+gpgcheck=0
+enabled=1
+" > /etc/yum.repos.d/nginx.repo 
+yum install nginx
+echo ""
+
+cp /root/vps_config/nginx/default.conf /etc/nginx/conf.d/default.conf 
+cp /root/vps_config/nginx/nginx.conf /etc/nginx/nginx.conf 
+
+nginx -t 
+echo ""
+
+SERVICE="nginx"
+if pgrep -x "$SERVICE" >/dev/null
+then
+    echo "$SERVICE is running, reload it"
+    nginx -s reload
+else
+    echo "$SERVICE stopped, start it"
+    nginx
+fi
+echo ""
