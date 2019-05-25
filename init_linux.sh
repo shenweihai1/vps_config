@@ -1,6 +1,5 @@
 cd /root/
-yum install git wget
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+yum install git wget zsh
 echo ""
 
 [ ! -d "vps_config" ] && git clone git@github.com:shenweihai1/vps_config.git vps_config
@@ -15,6 +14,8 @@ echo ""
 [ -d "everything" ] && cd everything && git pull && cd ..
 echo ""
 cp /root/everything/vimrc /root/.vimrc
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 [ ! -d "/etc/yum.repos.d/nginx.repo" ] && echo "[nginx]
 name=nginx repo
