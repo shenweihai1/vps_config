@@ -1,5 +1,6 @@
 cd /root/
-yum install git
+yum install git wget
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 echo ""
 
 [ ! -d "vps_config" ] && git clone git@github.com:shenweihai1/vps_config.git vps_config
