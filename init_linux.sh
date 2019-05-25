@@ -13,11 +13,12 @@ echo ""
 [ ! -d "everything" ] && git clone git@github.com:shenweihai1/everything.git everything 
 [ -d "everything" ] && cd everything && git pull && cd ..
 echo ""
-cp /root/everything/vimrc /root/.vimrc
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sed 's/ZSH_THEME="robbyrussell"/ZSH_THEME="af-magic"/g' ~/.zshrc > ~/.zshrc-m
 mv ~/.zshrc-m ~/.zshrc
+cp /root/everything/vimrc /root/.vimrc
+echo ""
 
 [ ! -d "/etc/yum.repos.d/nginx.repo" ] && echo "[nginx]
 name=nginx repo
