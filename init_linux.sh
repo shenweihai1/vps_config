@@ -16,6 +16,8 @@ echo ""
 cp /root/everything/vimrc /root/.vimrc
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sed 's/ZSH_THEME="robbyrussell"/ZSH_THEME="af-magic"/g' ~/.zshrc > ~/.zshrc-m
+mv ~/.zshrc-m ~/.zshrc
 
 [ ! -d "/etc/yum.repos.d/nginx.repo" ] && echo "[nginx]
 name=nginx repo
