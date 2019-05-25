@@ -10,6 +10,11 @@ echo ""
 [ -d "sparky" ] && cd sparky && git pull && cd ..
 echo ""
 
+[ ! -d "everything" ] && git clone git@github.com:shenweihai1/everything.git everything 
+[ -d "everything" ] && cd everything && git pull && cd ..
+echo ""
+cp /root/everything/vimrc /root/.vimrc
+
 [ ! -d "/etc/yum.repos.d/nginx.repo" ] && echo "[nginx]
 name=nginx repo
 baseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/
